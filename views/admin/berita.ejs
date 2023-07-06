@@ -1,0 +1,78 @@
+<%- include ('./partials/header.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Kelola Berita</h1>
+            </div>
+
+            <!-- Content Row -->
+            <div class="row">
+              <!-- Content Column -->
+              <div class="col-lg-6 mb-4">
+                <!-- isi content -->
+                <form action="/admin/berita" method="POST">
+                  <div class="form-group">
+                    <label for="exampleFormControlFile1">File input</label>
+                    <input
+                      type="file"
+                      class="form-control-file"
+                      id="exampleFormControlFile1"
+                      name="file"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Judul</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="formGroupExampleInput"
+                      placeholder="Input Judul"
+                      name="judul"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Isi Berita</label>
+                    <textarea
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                      name="isi_berita"
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+              <div class="row">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Gambar</th>
+                      <th scope="col">Judul</th>
+                      <th scope="col">Isi Berita</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (berita){ %> <% for(let i = 0; i < berita.length ;
+                    i++){ %>
+                    <tr>
+                      <th scope="row"><%- i + 1 %></th>
+                      <td>file gambar</td>
+                      <td><%- berita[i].judul %></td>
+                      <td><%- berita[i].isi_berita %></td>
+                    </tr>
+                    <%} %> <%} %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <%- include ('./partials/footer.ejs') %>

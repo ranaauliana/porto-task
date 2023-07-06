@@ -1,91 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <title>Kelola Profil</title>
-
-    <!-- Custom fonts for this template-->
-    <link
-      href="/assets/admin/vendor/fontawesome-free/css/all.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-      rel="stylesheet"
-    />
-
-    <!-- bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-
-    <!-- Custom styles for this template-->
-    <link href="/assets/admin/css/sb-admin-2.min.css" rel="stylesheet" />
-  </head>
-
-  <body id="page-top">
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-      <!-- Content Wrapper -->
-      <div id="content-wrapper" class="d-flex flex-column">
-        <!-- Main Content -->
-        <div id="content">
-          <!-- Topbar -->
-          <nav
-            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-          >
-            <!-- Sidebar Toggle (Topbar) -->
-            <button
-              id="sidebarToggleTop"
-              class="btn btn-link d-md-none rounded-circle mr-3"
-            >
-              <i class="fa fa-bars"></i>
-            </button>
-
-            <!-- HOME LINK -->
-            <div
-              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0"
-            >
-              <a href="home.html" class="text-gray-600">Home</a>
-            </div>
-
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-              <!-- Nav Item - User Information -->
-              <li class="nav-item">
-                <div>
-                  <a class="text-gray-600 m-1" href="profile.html"> Profil </a>
-                  <a class="text-gray-600 m-1" href="berita.html"> Berita </a>
-                  <a class="text-gray-600 m-1" href="document.html">
-                    Dokumen
-                  </a>
-                  <a class="text-gray-600 m-1" href="gallery.html"> Galeri </a>
-                  <a
-                    class="text-gray-600"
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#logoutModal"
-                  >
-                    Logout
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </nav>
-          <!-- End of Topbar -->
-
+<%- include ('./partials/header.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
@@ -101,7 +15,7 @@
 
             <!-- Content Row -->
             <div class="mb-3 mx-5">
-              <form>
+              <form action="/admin/profil" method="POST">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="firstname">Nama depan</label>
@@ -109,17 +23,19 @@
                       type="text"
                       class="form-control"
                       id="firstname"
-                      placeholder="sopo jenengan?"
+                      name="firstName"
+                      required
                     />
                   </div>
 
                   <div class="form-group col-md-6">
                     <label for="lastname">Nama belakang</label>
                     <input
-                      type="password"
+                      type="text"
                       class="form-control"
                       id="lastname"
-                      placeholder="iku"
+                      name="lastName"
+                      required
                     />
                   </div>
                 </div>
@@ -131,15 +47,19 @@
                       class="form-control"
                       id="email"
                       placeholder="example@gmail.com"
+                      name="email"
+                      required
                     />
                   </div>
                   <div class="form-group col-md-6">
                     <label for="phoneNumber">Nomor telepon</label>
                     <input
-                      type="text"
+                      type="number"
                       class="form-control"
                       id="phoneNumber"
                       placeholder="08XXXXXXXXXX"
+                      name="tlp"
+                      required
                     />
                   </div>
                 </div>
@@ -150,7 +70,8 @@
                     type="text"
                     class="form-control"
                     id="email"
-                    placeholder="Jl Jambu"
+                    name="alamat"
+                    required
                   />
                 </div>
                 <div class="form-group">
@@ -160,6 +81,8 @@
                     class="form-control"
                     id="linkedin"
                     placeholder="https://www.linkedin.com/patricia"
+                    name="linkedin"
+                    required
                   />
                 </div>
                 <div class="form-group">
@@ -169,21 +92,41 @@
                     class="form-control"
                     id="github"
                     placeholder="https://www.github.com/patricia"
+                    name="github"
+                    required
                   />
                 </div>
 
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="inputCity">Kota</label>
-                    <input type="text" class="form-control" id="inputCity" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputCity"
+                      name="kota"
+                      required
+                    />
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="inputState">Kabupaten</label>
-                    <input type="text" class="form-control" id="inputState" />
+                    <label for="inputState">Kecamatan</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputState"
+                      name="kec"
+                      required
+                    />
                   </div>
                   <div class="form-group col-md-2">
                     <label for="inputZip">Kode Pos</label>
-                    <input type="text" class="form-control" id="inputZip" />
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="inputZip"
+                      name="kodepos"
+                      required
+                    />
                   </div>
                 </div>
 
@@ -217,6 +160,8 @@
                     class="form-control"
                     id="exampleFormControlTextarea1"
                     rows="3"
+                    name="desc"
+                    required
                   ></textarea>
                 </div>
 
@@ -230,6 +175,8 @@
                       class="form-control"
                       id="organisasi"
                       placeholder="berburu ubur-ubur"
+                      name="org"
+                      required
                     />
                   </div>
                   <div class="form-group col-md-6">
@@ -239,13 +186,21 @@
                       class="form-control"
                       id="gelar"
                       placeholder="Hokage"
+                      name="posisi"
+                      required
                     />
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="desc">Deskripsi organisasi</label>
-                  <textarea class="form-control" id="desc" rows="3"></textarea>
+                  <textarea
+                    class="form-control"
+                    id="desc"
+                    rows="3"
+                    name="desc_org"
+                    required
+                  ></textarea>
                 </div>
                 <div class="form-group">
                   <label for="location"
@@ -256,6 +211,8 @@
                     class="form-control"
                     id="location"
                     placeholder="Bikini bottom"
+                    name="loc"
+                    required
                   />
                 </div>
                 <div class="form-row">
@@ -265,6 +222,8 @@
                       class="form-select form-control"
                       aria-label="Default select example"
                       id="month"
+                      name="startMonth"
+                      required
                     >
                       <option selected></option>
                       <option value="1">Jan</option>
@@ -287,6 +246,8 @@
                       class="form-select form-control"
                       aria-label="Default select example"
                       id="startYear"
+                      name="startYear"
+                      required
                     >
                       <option selected></option>
                       <option value="2015">2015</option>
@@ -308,6 +269,8 @@
                       class="form-select form-control"
                       aria-label="Default select example"
                       id="month"
+                      name="endMonth"
+                      required
                     >
                       <option selected></option>
                       <option value="1">Jan</option>
@@ -330,6 +293,8 @@
                       class="form-select form-control"
                       aria-label="Default select example"
                       id="startYear"
+                      name="endYear"
+                      required
                     >
                       <option selected></option>
                       <option value="2015">2015</option>
@@ -360,11 +325,16 @@
 
                 <label for="photo">Upload Foto</label>
                 <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="photo" />
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="photo"
+                    name="foto"
+                  />
                 </div>
                 <label for="cv">Upload CV</label>
                 <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="cv" />
+                  <input type="file" class="form-control" id="cv" name="cv" />
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -375,79 +345,8 @@
         </div>
         <!-- End of Main Content -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2021</span>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
-      </div>
-      <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button
-              class="close"
-              type="button"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Select "Logout" below if you are ready to end your current session.
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-secondary"
-              type="button"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
+        <%- include ('./partials/footer.ejs') %>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="/assets/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/assets/admin/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="/assets/admin/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/assets/admin/js/demo/chart-area-demo.js"></script>
-    <script src="/assets/admin/js/demo/chart-pie-demo.js"></script>
   </body>
 </html>
