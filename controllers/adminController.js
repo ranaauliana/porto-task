@@ -12,11 +12,39 @@ module.exports = {
       res.send(error);
     }
   },
+  // get tampilan berita
   getBerita: async (req, res) => {
     try {
-      let berita = await Berita.find();
+      res.render("admin/berita");
+    } catch (error) {
+      res.send(error);
+    }
+  },
+  // get data berita
+  getDataBerita: async (req, res) => {
+    try {
+      let berita = await Berita.find({});
 
-      res.render("admin/berita", { berita });
+      res.send({
+        message: "tampilkan data",
+        berita: berita,
+      });
+    } catch (error) {
+      res.send(error);
+    }
+  },
+  // get id berita
+  getIdBerita: async (req, res) => {
+    try {
+      let { id } = req.params;
+      let berita = await Berita.find({ _id: id });
+
+      // console.log(berita);
+
+      res.send({
+        message: "tampilkan data dengan id" + id,
+        berita: berita,
+      });
     } catch (error) {
       res.send(error);
     }
@@ -30,6 +58,31 @@ module.exports = {
       res.redirect("/admin/berita");
     } catch (error) {
       res.send(error.message);
+    }
+  },
+  editBerita: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { judul, isi_berita } = req.body;
+
+      console.log({ id });
+
+      await Berita.findByIdAndUpdate({ _id: id }, { judul, isi_berita });
+
+      res.redirect("/admin/berita");
+    } catch (error) {
+      res.send(error.message);
+    }
+  },
+  deleteBerita: async (req, res) => {
+    try {
+      let { id } = req.params;
+
+      await Berita.findByIdAndRemove({ _id: id });
+
+      res.redirect("/admin/berita");
+    } catch (error) {
+      console.log(error.message);
     }
   },
 
